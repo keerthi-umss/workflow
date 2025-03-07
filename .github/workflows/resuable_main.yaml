@@ -1,0 +1,5 @@
+jobs:
+  call-reusable:
+    uses: owner/repo/.github/workflows/reusable.yml@main
+    with:
+      node-version: 18
