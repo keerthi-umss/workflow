@@ -1,0 +1,16 @@
+name: Webhook Demo
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  send_webhook:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Send Webhook
+        run: |
+          curl -X POST "https://webhook.site/your-unique-id" \
+          -H "Content-Type: application/json" \
+          -d '{"message": "A new push was made to the main branch!"}'
