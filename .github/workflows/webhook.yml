@@ -11,6 +11,6 @@ jobs:
     steps:
       - name: Send Webhook
         run: |
-          curl -X POST "https://webhook.site/your-unique-id" \
+          curl -X POST "https://webhook.site/159bf395-1d37-46e1-af11-6bf0fb467158" \
           -H "Content-Type: application/json" \
           -d '{"message": "A new push was made to the main branch!"}'
