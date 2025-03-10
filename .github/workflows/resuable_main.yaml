@@ -1,6 +1,11 @@
-on:
-  workflow_call:  
-    inputs:
-      node-version:
-        required: false
-        type: string
+name: Use Reusable CI
+
+on: [push, pull_request]
+
+jobs:
+  call-reusable:
+    uses: owner/repo/.github/workflows/reusable.yml@main  # Replace with actual repo
+    with:
+      node-version: "18"
+      test-command: "npm run test:ci"
+
