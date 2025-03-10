@@ -1,0 +1,9 @@
+name: Call Reusable Workflow
+
+on: [workflow_dispatch]
+
+jobs:
+  call-reusable:
+    uses: keerthi-umss/workflow/blob/main/.github/workflows/reusable.yaml@main
+    with:
+      username: "TestUser"
