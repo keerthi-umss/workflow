@@ -1,0 +1,31 @@
+name: Cache Python Dependencies
+
+on: [push, pull_request]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: "3.9"
+
+      - name: Install Dependencies
+        run: |
+          pip install --upgrade pip
+          pip install -r requirements.txt
+
+  cache:
+    runs-on: ubuntu-latest
+    needs: build  # ✅ Waits for build job to finish
+    steps:
+      - name: Cache pip dependencies
+        uses: actions/cache@v4
+        with:
+          path: ~/.cache/pip
+          key: python-${{ runner.os }}-${{ hashFiles('**/requirements.txt') }}
+          restore-keys: python-${{ runner.os }}-
