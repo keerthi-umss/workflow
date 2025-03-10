@@ -4,7 +4,7 @@ on: [push, pull_request]
 
 jobs:
   call-reusable:
-    uses: keerthi-umss/workflow/blob/main/.github/workflows/reusable.yaml@main  # Replace with actual repo
+    uses: /keerthi-umss/workflow/blob/main/.github/workflows/reusable.yaml@main  # Replace with actual repo
     with:
       node-version: "18"
       test-command: "npm run test:ci"
