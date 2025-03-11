@@ -7,3 +7,5 @@ jobs:
     uses: keerthi-umss/Workflow-Hands-on/.github/workflows/reuse_1.yaml@main  
     with:
       node-version: "18"
+    secrets:
+      token: ${{ secrets.NEW_TOKEN }}
