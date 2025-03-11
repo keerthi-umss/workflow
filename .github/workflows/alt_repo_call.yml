@@ -4,6 +4,6 @@ on: [push, pull_request]
 
 jobs:
   call-reusable:
-    uses: keerthi-umss/Workflow-Hands-on/blob/main/.github/workflows/reuse_1.yaml@main  
+    uses: keerthi-umss/Workflow-Hands-on/.github/workflows/reuse_1.yaml@main  
     with:
       node-version: "18"
