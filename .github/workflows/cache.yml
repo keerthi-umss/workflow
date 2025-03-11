@@ -9,21 +9,24 @@ jobs:
       - name: Checkout Repository
         uses: actions/checkout@v4
 
+      # ✅ Cache dependencies using a fixed key
       - name: Cache Dependencies
         uses: actions/cache@v4
         with:
           path: ~/.cache/my_project  # Directory to cache
-          key: myproject-${{ runner.os }}-${{ hashFiles('requirements.txt') }}
-          restore-keys: myproject-${{ runner.os }}-
+          key: myproject-${{ runner.os }}-v1
+          restore-keys: |
+            myproject-${{ runner.os }}-
 
       - name: Install Dependencies
         run: |
           mkdir -p ~/.cache/my_project
           echo "Installing dependencies..." > ~/.cache/my_project/dependencies.log
-          
+
       - name: Build Project
         run: echo "Building project..." > build.log
 
+      # ✅ Upload build logs as an artifact
       - name: Upload Build Artifact
         uses: actions/upload-artifact@v4
         with:
@@ -31,7 +34,7 @@ jobs:
           path: build.log
 
   test:
-    needs: build  # Waits for build job
+    needs: build  # ✅ Wait for the build job to complete
     runs-on: ubuntu-latest
     steps:
       - name: Download Build Artifact
